@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres da página -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ajusta o layout para dispositivos móveis -->
+    <title>Escolha seu Horário</title> <!-- Título da página no navegador -->
+
+    <!-- Estilos CSS para o design da página -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* Define a fonte do corpo da página */
+            background-color: #f4f4f4;
+            /* Cor de fundo da página */
+            text-align: center;
+            /* Alinha o texto no centro */
+            padding: 20px;
+            /* Adiciona padding ao redor do conteúdo */
+        }
+
+        h2 {
+            color: #333;
+            /* Cor do título */
+        }
+
+        select {
+            padding: 8px;
+            /* Padding dentro da caixa de seleção */
+            margin-bottom: 20px;
+            /* Espaço abaixo da caixa de seleção */
+            font-size: 16px;
+            /* Tamanho da fonte na caixa de seleção */
+        }
+
+        table {
+            width: 80%;
+            /* Largura da tabela */
+            margin: auto;
+            /* Centraliza a tabela */
+            border-collapse: collapse;
+            /* Remove os espaços entre as células */
+            background: white;
+            /* Cor de fundo da tabela */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Sombra para dar um efeito de elevação */
+            border-radius: 8px;
+            /* Bordas arredondadas para a tabela */
+            overflow: hidden;
+            /* Esconde qualquer conteúdo excedente */
+        }
+
+        th,
+        td {
+            padding: 12px;
+            /* Padding dentro das células */
+            text-align: center;
+            /* Alinha o conteúdo das células ao centro */
+            border: 1px solid #ddd;
+            /* Borda das células */
+        }
+
+        th {
+            background-color: #007bff;
+            /* Cor de fundo das células de título */
+            color: white;
+            /* Cor do texto nas células de título */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+            /* Cor de fundo para linhas pares */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+            /* Cor de fundo para linhas ímpares */
+        }
+
+        .disponivel {
+            background-color: #d4edda;
+            /* Cor de fundo para horários disponíveis */
+            color: #155724;
+            /* Cor do texto para horários disponíveis */
+            font-weight: bold;
+            /* Deixa o texto em negrito */
+            display: flex;
+            /* Centraliza corretamente */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ocupado {
+            background-color: #f8d7da;
+            /* Cor de fundo para horários ocupados */
+            color: #721c24;
+            /* Cor do texto para horários ocupados */
+            font-weight: bold;
+            /* Deixa o texto em negrito */
+        }
+
+        button {
+            background-color: #28a745;
+            /* Cor de fundo do botão */
+            color: white;
+            /* Cor do texto do botão */
+            border: none;
+            /* Remove a borda do botão */
+            padding: 8px;
+            /* Padding dentro do botão */
+            cursor: pointer;
+            /* Muda o cursor quando passa sobre o botão */
+            font-size: 14px;
+            /* Tamanho da fonte no botão */
+            border-radius: 4px;
+            /* Bordas arredondadas no botão */
+        }
+
+        button:hover {
+            background-color: #218838;
+            /* Cor do botão quando o mouse passa sobre ele */
+        }
+    </style>
+</head>
+
+<body onload="carregarHorarios()">
+    <h2>Escolha sua Unidade</h2>
+    <select id="unidade" onchange="carregarHorarios()">
+        <option value="Botafogo">Botafogo</option>
+        <option value="Tijuca I">Tijuca I</option>
+        <option value="Tijuca II">Tijuca II</option>
+    </select>
+    <div id="horarios"></div>
+</body>
+
+</html>
