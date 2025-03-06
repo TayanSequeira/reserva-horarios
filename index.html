@@ -1,137 +1,290 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8"> <!-- Define a codificação de caracteres da página -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Ajusta o layout para dispositivos móveis -->
-    <title>Escolha seu Horário</title> <!-- Título da página no navegador -->
-
-    <!-- Estilos CSS para o design da página -->
+    <title>Escolha seu Horário</title>
+    
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            /* Define a fonte do corpo da página */
-            background-color: #f4f4f4;
-            /* Cor de fundo da página */
-            text-align: center;
-            /* Alinha o texto no centro */
-            padding: 20px;
-            /* Adiciona padding ao redor do conteúdo */
-        }
-
-        h2 {
+            background-color: #f5f5f5;
             color: #333;
-            /* Cor do título */
         }
 
-        select {
-            padding: 8px;
-            /* Padding dentro da caixa de seleção */
-            margin-bottom: 20px;
-            /* Espaço abaixo da caixa de seleção */
-            font-size: 16px;
-            /* Tamanho da fonte na caixa de seleção */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #002e6e;
+            padding: 15px 40px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        main {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #002e6e;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 10px 0 20px;
+        }
+
+        .botao {
+            background-color: #ffcc00;
+            color: #002e6e;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            background-color: #ffd633;
+        }
+
+        #horarios {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
 
         table {
-            width: 80%;
-            /* Largura da tabela */
-            margin: auto;
-            /* Centraliza a tabela */
             border-collapse: collapse;
-            /* Remove os espaços entre as células */
-            background: white;
-            /* Cor de fundo da tabela */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* Sombra para dar um efeito de elevação */
+            width: 80%;
+            text-align: center;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            /* Bordas arredondadas para a tabela */
             overflow: hidden;
-            /* Esconde qualquer conteúdo excedente */
         }
 
-        th,
-        td {
-            padding: 12px;
-            /* Padding dentro das células */
-            text-align: center;
-            /* Alinha o conteúdo das células ao centro */
-            border: 1px solid #ddd;
-            /* Borda das células */
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
         }
 
         th {
-            background-color: #007bff;
-            /* Cor de fundo das células de título */
+            background-color: #002e6e;
             color: white;
-            /* Cor do texto nas células de título */
         }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-            /* Cor de fundo para linhas pares */
+        td {
+            background-color: #f9f9f9;
         }
 
-        tr:nth-child(odd) {
-            background-color: #ffffff;
-            /* Cor de fundo para linhas ímpares */
-        }
-
-        .disponivel {
-            background-color: #d4edda;
-            /* Cor de fundo para horários disponíveis */
-            color: #155724;
-            /* Cor do texto para horários disponíveis */
+        .disponivel button {
+            background-color: #ffcc00;
+            border: none;
+            padding: 8px 12px;
+            font-size: 1rem;
             font-weight: bold;
-            /* Deixa o texto em negrito */
-            display: flex;
-            /* Centraliza corretamente */
-            justify-content: center;
-            align-items: center;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .disponivel button:hover {
+            background-color: #ffd633;
         }
 
         .ocupado {
-            background-color: #f8d7da;
-            /* Cor de fundo para horários ocupados */
-            color: #721c24;
-            /* Cor do texto para horários ocupados */
+            color: red;
             font-weight: bold;
-            /* Deixa o texto em negrito */
         }
 
-        button {
-            background-color: #28a745;
-            /* Cor de fundo do botão */
+        footer {
+            background-color: #002e6e;
             color: white;
-            /* Cor do texto do botão */
-            border: none;
-            /* Remove a borda do botão */
-            padding: 8px;
-            /* Padding dentro do botão */
-            cursor: pointer;
-            /* Muda o cursor quando passa sobre o botão */
-            font-size: 14px;
-            /* Tamanho da fonte no botão */
-            border-radius: 4px;
-            /* Bordas arredondadas no botão */
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
         }
 
-        button:hover {
-            background-color: #218838;
-            /* Cor do botão quando o mouse passa sobre ele */
+        /* Estilos do Modal */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal-content input {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-content button {
+            background-color: #ffcc00;
+            color: #002e6e;
+            border: none;
+            padding: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .modal-content button:hover {
+            background-color: #ffd633;
         }
     </style>
+
+    <script>
+        async function carregarHorarios() {
+            let unidade = document.getElementById("unidade").value;
+            google.script.run.withSuccessHandler(mostrarTabela).getHorarios(unidade);
+        }
+
+        function mostrarTabela(data) {
+            let tabela = "<table><tr><th>Dia</th><th>Horário</th><th>Monitor 1</th><th>Monitor 2</th><th>Monitor 3</th></tr>";
+
+            data.forEach((linha, index) => {
+                if (linha[0] && linha[1]) {
+                    let monitores = [];
+
+                    for (let i = 2; i < 5; i++) {
+                        if (linha[i]) {
+                            monitores.push(`<td class="ocupado">${linha[i]}</td>`);
+                        } else {
+                            monitores.push(`
+                                <td class="disponivel">
+                                    <button onclick="reservarHorario(${index}, ${i})">Reservar</button>
+                                </td>
+                            `);
+                        }
+                    }
+
+                    tabela += `<tr>
+                        <td>${linha[0]}</td>
+                        <td>${linha[1]}</td>
+                        ${monitores.join("")}
+                    </tr>`;
+                }
+            });
+
+            tabela += "</table>";
+            document.getElementById("horarios").innerHTML = tabela;
+        }
+
+        // Função para abrir o modal e passar as informações de linha e coluna
+        function reservarHorario(linha, coluna) {
+            document.getElementById("modal").style.display = "flex";
+            window.reservaInfo = { linha, coluna };  // Armazenando as informações da reserva
+        }
+
+        // Função para confirmar a reserva
+        function confirmarReserva() {
+            let nome = document.getElementById("nome").value;
+            if (nome) {
+                let { linha, coluna } = window.reservaInfo;
+                let unidade = document.getElementById("unidade").value;
+
+                google.script.run
+                    .withSuccessHandler(function(mensagem) {
+                        alert(mensagem);
+                        carregarHorarios();
+                        fecharModal();
+                    })
+                    .reservarHorario(unidade, linha, coluna, nome);
+            } else {
+                alert("Por favor, insira seu nome.");
+            }
+        }
+
+        // Função para fechar o modal
+        function fecharModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
 </head>
-
 <body onload="carregarHorarios()">
-    <h2>Escolha sua Unidade</h2>
-    <select id="unidade" onchange="carregarHorarios()">
-        <option value="Botafogo">Botafogo</option>
-        <option value="Tijuca I">Tijuca I</option>
-        <option value="Tijuca II">Tijuca II</option>
-    </select>
-    <div id="horarios"></div>
-</body>
+    <header>
+        <div class="logo">
+            <?!= include('logo'); ?>
+        </div>
 
+    </header>
+
+    <main>
+        <h1>Escolha sua Unidade</h1>
+        <p>Selecione a unidade para visualizar os horários disponíveis.</p>
+        <select id="unidade" onchange="carregarHorarios()">
+            <option value="Botafogo">Botafogo</option>
+            <option value="Tijuca I">Tijuca I</option>
+            <option value="Tijuca II">Tijuca II</option>
+            <option value="Icarai II">Icarai II</option>
+        </select>
+        <div id="horarios"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Colégio pH - Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Modal de reserva -->
+    <div id="modal">
+        <div class="modal-content">
+            <label for="nome">Digite seu nome:</label>
+            <input type="text" id="nome" name="nome">
+            <button onclick="confirmarReserva()">Confirmar</button>
+            <button onclick="fecharModal()">Fechar</button>
+        </div>
+    </div>
+</body>
 </html>

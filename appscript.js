@@ -1,3 +1,4 @@
+
 // Defina o ID da planilha (substitua pelo ID real da sua planilha)
 const SHEET_ID = "15F38ksO8NiVuCkZFAN8YlELrH746x93ijZYF7-VS16k";
 
