@@ -10,12 +10,12 @@ Este projeto permite que monitores reservem horários de atendimento usando **Go
 ## 📌 Como usar?
 1. Faça uma cópia do [modelo de planilha](https://docs.google.com/spreadsheets/d/15F38ksO8NiVuCkZFAN8YlELrH746x93ijZYF7-VS16k/edit?usp=sharing).
 2. Vá em **Extensões > Apps Script** e copie o código do arquivo `appsscript.js`.
-3. Publique o projeto no Google Apps Script.
-4. Acesse o link gerado e comece a reservar horários!
+3. Crie um arquivo index.html no appscript.
+4. Publique o projeto no Google Apps Script.
+5. Acesse o link gerado e comece a reservar horários!
 
 ## 📂 Organização do Código:
 - `index.html`: Interface do usuário
-- `script.js`: Lógica da interação com Apps Script
 - `style.css`: Estilização da página
 - `appsscript.js`: Código que roda no Google Apps Script
 
