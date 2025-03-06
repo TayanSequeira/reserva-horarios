@@ -16,7 +16,6 @@ Este projeto permite que monitores reservem horários de atendimento usando **Go
 ## 📂 Organização do Código:
 - `index.html`: Interface do usuário
 - `script.js`: Lógica da interação com Apps Script
-- `style.css`: Estilização da página
 - `appsscript.js`: Código que roda no Google Apps Script
 
 ---
